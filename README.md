@@ -55,3 +55,7 @@ Structure data lives in `js/structures-data.js`; the wording you write lives in 
 2. `_headers` sets security and cache headers, `404.html` is the not-found page, `robots.txt` and `sitemap.xml` are for search engines.
 3. Camera access (AR) needs HTTPS. Netlify provides it free for anatomark.com once the domain is verified.
 4. After changing any JS or CSS, bump the `?v=` tag in the HTML files so phones fetch the new version.
+
+## Offline caching (service worker)
+`sw.js` keeps models, thumbnails and libraries on the phone after the first visit (instant later, works offline). Pages/JS/CSS stay network-first so updates still arrive.
+**When you replace a model or thumbnail, change `MODELS_VERSION` at the top of `sw.js`** (e.g. "m1" to "m2"), otherwise phones keep the old copy.

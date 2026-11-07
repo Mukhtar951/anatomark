@@ -9,8 +9,8 @@
     <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png" />
     <meta name="theme-color" content="#010a0c" />
     <title>AR View — AnatoMark</title>
-    <link rel="stylesheet" href="../css/tokens.css?v=20261106r5" />
-    <link rel="stylesheet" href="../css/ar-view.css?v=20261106r5" />
+    <link rel="stylesheet" href="../css/tokens.css?v=20261107r6" />
+    <link rel="stylesheet" href="../css/ar-view.css?v=20261107r6" />
 
     <!-- A-Frame must load before the AR.js A-Frame build. Versions are
          pinned on purpose — bumping either independently is the most
@@ -35,7 +35,7 @@
           var src = localExists(l.local) ? l.local : l.cdn;
           document.write('<script src="' + src + '" onerror="window.__arLibFailed=true"><\/script>');
         });
-        document.write('<script src="../js/draco-path.js?v=20261106r5"><\/script>'); // offline Draco decoder, if bundled
+        document.write('<script src="../js/draco-path.js?v=20261107r6"><\/script>'); // offline Draco decoder, if bundled
       })();
     </script>
   </head>
@@ -130,12 +130,13 @@
       <a-entity camera></a-entity>
     </a-scene>
 
-    <script src="../js/descriptions.js?v=20261106r5"></script>
-    <script src="../js/structures-data.js?v=20261106r5"></script>
-    <script src="../js/fit-math.js?v=20261106r5"></script>
-    <script src="../js/bone-texture.js?v=20261106r5"></script>
-    <script src="../js/pose-filter.js?v=20261106r5"></script>
-    <script src="../js/ar-gestures.js?v=20261106r5"></script>
-    <script src="../js/ar-view.js?v=20261106r5"></script>
-  </body>
+    <script src="../js/descriptions.js?v=20261107r6"></script>
+    <script src="../js/structures-data.js?v=20261107r6"></script>
+    <script src="../js/fit-math.js?v=20261107r6"></script>
+    <script src="../js/bone-texture.js?v=20261107r6"></script>
+    <script src="../js/pose-filter.js?v=20261107r6"></script>
+    <script src="../js/ar-gestures.js?v=20261107r6"></script>
+    <script src="../js/ar-view.js?v=20261107r6"></script>
+  <script src="../js/sw-register.js?v=20261107r6"></script>
+</body>
 </html>

@@ -11,7 +11,7 @@
    ========================================================= */
 window.ANATOMARK_CONTACT = {
   email: "muktaraminu951@gmail.com",
-  whatsapp: "07037576391",
+  whatsapp: "",
   whatsappMessage: "Hello, I have a question about AnatoMark.",
   emailSubject: "AnatoMark enquiry",
 };
@@ -27,5 +27,5 @@ window.ANATOMARK_PROJECT = [
   { label: "Department", value: "Human Anatomy" },
   { label: "University", value: "Northwest University Kano" },
   { label: "Session",    value: "2025/2026" },
-  { label: "Supervisor", value: "Ibrahim Yusuf (Bsc, Msc)" },
+  { label: "Supervisor", value: "Mr. Ibrahim Yusuf" },
 ];

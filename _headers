@@ -19,3 +19,6 @@
   Cache-Control: public, max-age=86400
 /libs/*
   Cache-Control: public, max-age=604800
+
+/sw.js
+  Cache-Control: no-cache
