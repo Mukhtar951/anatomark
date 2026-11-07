@@ -1,0 +1,136 @@
+.marker-main {
+  width: min(560px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 28px 0 80px;
+  text-align: center;
+}
+
+.marker-crumb {
+  display: flex; align-items: center; justify-content: flex-start; gap: 10px;
+  margin-bottom: 26px;
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-align: left;
+}
+
+.marker-main h1 {
+  margin: 0 0 10px;
+  color: var(--color-white);
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 700;
+  text-align: left;
+}
+.marker-sub {
+  color: var(--color-text-muted);
+  font-size: 14.5px;
+  margin: 0 0 28px;
+  text-align: left;
+}
+
+.marker-preview {
+  position: relative;
+  max-width: 280px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 22px;
+  border: 1px solid rgba(0, 229, 199, 0.25);
+  border-radius: var(--radius-lg);
+  background: rgba(10, 25, 25, 0.5);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.marker-preview img { width: 100%; height: 100%; object-fit: contain; border-radius: 6px; }
+.marker-preview .corner { position: absolute; width: 18px; height: 18px; border: 1.6px solid var(--color-primary); opacity: 0.7; }
+.marker-preview .tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.marker-preview .tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+.marker-preview .bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+.marker-preview .br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+.marker-meta {
+  display: flex; flex-direction: column; gap: 6px;
+  margin-bottom: 22px;
+  text-align: left;
+}
+.marker-meta-row { display: flex; gap: 8px; font-size: 12.5px; color: var(--color-text-muted); }
+.marker-meta-row .k { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+.marker-meta-row .v { color: var(--color-white); }
+
+.marker-btn {
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  width: 100%; min-height: 54px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: transform 160ms ease;
+}
+.marker-btn:hover { transform: translateY(-2px); }
+.marker-btn.primary { background: var(--color-primary); color: #001411; border: none; box-shadow: 0 0 24px rgba(0,229,199,0.22); }
+.marker-btn.secondary { background: rgba(0,229,199,0.03); color: var(--color-primary); border: 1px solid rgba(0,229,199,0.4); }
+
+.marker-note {
+  display: flex; align-items: flex-start; gap: 8px;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 16px;
+  text-align: left;
+}
+
+
+.marker-error {
+  margin: 0 0 14px; padding: 14px;
+  border: 1px solid rgba(255, 107, 94, 0.5); border-radius: var(--radius-md);
+  color: var(--color-coral); font-size: 13px; text-align: left;
+}
+.marker-error p { margin: 0 0 10px; }
+.marker-error .marker-btn { margin-bottom: 0; min-height: 44px; }
+.marker-btn[hidden], .marker-error[hidden] { display: none; }
+.marker-print-caption { display: none; }
+
+.marker-free { margin: 0 0 22px; color: var(--color-text-muted); font-size: 13px; text-align: center; }
+
+.size-guide {
+  margin: 8px 0 0; padding: 16px; text-align: left;
+  border: 1px dashed rgba(0,229,199,0.3); border-radius: var(--radius-lg);
+}
+.size-guide h2 { margin: 0 0 12px; font-size: 15px; color: var(--color-white); }
+.size-guide-body { display: flex; gap: 18px; align-items: flex-start; }
+.size-figure { margin: 0; flex-shrink: 0; text-align: center; color: var(--color-primary); }
+.size-figure figcaption { margin-top: 6px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; line-height: 1.45; color: var(--color-text-muted); }
+.size-rules { margin: 0; padding-left: 18px; color: var(--color-text-muted); font-size: 13px; line-height: 1.55; }
+.size-rules li + li { margin-top: 6px; }
+
+@media (max-width: 480px) {
+  .size-guide-body { flex-direction: column; align-items: center; }
+}
+
+/* desktop: marker on the left, actions + guide on the right */
+@media (min-width: 900px) {
+  .marker-main { width: min(980px, calc(100% - 64px)); }
+  .marker-layout { display: grid; grid-template-columns: 340px 1fr; gap: 40px; align-items: start; }
+  .marker-preview { max-width: 340px; }
+}
+
+
+/* Printing: only the marker, large, on white */
+@media print {
+  html, body { background: #fff !important; color: #000 !important; }
+  .site-header, .site-footer, .marker-crumb, .marker-main h1, .marker-sub, .marker-meta,
+  .marker-btn, #printingTipsPanel, .marker-note, .marker-error, .marker-free, .size-guide, .marker-col-right, .marker-preview .corner { display: none !important; }
+  .marker-main { width: auto; padding: 0; }
+  .marker-preview { max-width: none; width: 14cm; aspect-ratio: auto; border: none; background: none; padding: 0; margin: 2cm auto 0; display: block; }
+  .marker-preview img { width: 100%; height: auto; border-radius: 0; }
+  .marker-print-caption { display: block; margin-top: 12px; text-align: center; font: 12px/1.4 sans-serif; color: #000; }
+}
+
+.marker-btn small { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; opacity: 0.75; margin-left: 4px; }
+.marker-btn.primary[hidden] { display: none; }
+.marker-pdf-note { margin: 0 0 18px; color: var(--color-text-muted); font-size: 12.5px; text-wrap: balance; }
+@media print { .marker-pdf-note { display: none !important; } }

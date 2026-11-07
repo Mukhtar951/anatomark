@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /pages/ar-view.html
+
+Sitemap: https://anatomark.com/sitemap.xml

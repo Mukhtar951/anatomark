@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/logo/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="../assets/logo/favicon-48.png" />
+    <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png" />
+    <meta name="theme-color" content="#010a0c" />
+    <title>Structure Detail — AnatoMark</title>
+    <meta name="description" content="Explore this structure in AnatoMark and launch it in augmented reality." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AnatoMark" />
+    <meta property="og:title" content="Structure Detail — AnatoMark" />
+    <meta property="og:description" content="Explore this structure in AnatoMark and launch it in augmented reality." />
+    <meta property="og:image" content="https://anatomark.com/assets/images/og-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AnatoMark: a glowing 3D skull beside the words AnatoMark, augmented reality human anatomy" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Structure Detail — AnatoMark" />
+    <meta name="twitter:description" content="Explore this structure in AnatoMark and launch it in augmented reality." />
+    <meta name="twitter:image" content="https://anatomark.com/assets/images/og-card.png" />
+    <link rel="stylesheet" href="../css/tokens.css?v=20261106r5" />
+    <link rel="stylesheet" href="../css/nav.css?v=20261106r5" />
+    <link rel="stylesheet" href="../css/footer.css?v=20261106r5" />
+    <link rel="stylesheet" href="../css/structure-detail.css?v=20261106r5" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="../index.html" class="brand" aria-label="AnatoMark Home">
+          <img src="../assets/logo/logo-mark.png" alt="" class="brand-logo" width="26" height="32" />
+          <span class="brand-text">Anato<span>Mark</span></span>
+        </a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="how-to-use.html" class="nav-link">How To Use</a>
+          <a href="download-marker.html" class="nav-link">Download Marker</a>
+        </nav>
+        <button type="button" class="mobile-menu-button" id="mobileMenuButton" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+        <a href="../index.html" class="mobile-nav-link">Home</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="how-to-use.html" class="mobile-nav-link">How To Use</a>
+        <a href="download-marker.html" class="mobile-nav-link">Download Marker</a>
+      </nav>
+    </header>
+
+    <main class="detail-main" id="detailMain">
+      <div class="detail-crumb">
+        <a href="../index.html" id="detailBackLink" class="back-btn" aria-label="Back"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+        <span>STRUCTURE DETAIL</span>
+      </div>
+
+      <div class="detail-grid">
+        <div>
+          <div class="viewer-panel">
+            <span class="viewer-corner tl"></span><span class="viewer-corner tr"></span>
+            <span class="viewer-corner bl"></span><span class="viewer-corner br"></span>
+            <button class="viewer-reset" id="viewerReset" aria-label="Reset rotation">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7M21 3v6h-6"/></svg>
+            </button>
+            <div class="viewer-image-wrap" id="viewerImageWrap">
+              <img id="detailImage" alt="" draggable="false" />
+            </div>
+            <div class="viewer-hint"><svg class="hint-hand" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5a1.5 1.5 0 013 0v5m0-1.5a1.5 1.5 0 013 0V11m0-1a1.5 1.5 0 013 0v5a6 6 0 01-6 6h-1a6 6 0 01-5-2.7L4 14.5a1.5 1.5 0 012.4-1.8L9 15"/></svg> <span class="t">DRAG TO ROTATE · PINCH TO ZOOM</span></div>
+            <p class="viewer-fallback-note" id="viewerNote" hidden></p>
+          </div>
+        </div>
+
+        <div>
+          <div class="detail-title-row">
+            <h1 id="detailName">—</h1>
+            <span class="detail-tag" id="detailTag">—</span>
+          </div>
+
+          <div class="detail-about">
+            <h2>About This Structure</h2>
+            <p id="detailAbout">—</p>
+          </div>
+
+          <div class="spec-table" id="specTable"></div>
+
+          <a class="ar-launch-btn" id="arLaunchBtn" href="#">
+            <span aria-hidden="true">⌗</span> Launch AR View
+          </a>
+          <p class="ar-caption">◇ Visualize this structure in augmented reality</p>
+          <p class="model-credit" id="modelCredit" hidden></p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brandcol">
+          <p class="footer-brand">Anato<span>Mark</span></p>
+          <p class="footer-tag">See anatomy come to life in augmented reality.</p>
+        </div>
+        <nav class="footer-col" aria-label="Explore">
+          <h2>Explore</h2>
+          <a href="../index.html">Home</a>
+          <a href="library.html">Library</a>
+          <a href="how-to-use.html">How To Use</a>
+          <a href="download-marker.html">Download Marker</a>
+          <a href="about.html">About</a>
+        </nav>
+        <div class="footer-col">
+          <h2>Project</h2>
+          <span>Final year project</span>
+          <span>Department of Human Anatomy</span>
+          <span>Northwest University Kano</span>
+          <span>Session 2025/2026</span>
+        </div>
+      </div>
+      <p class="footer-credits">Student: <strong>Mukhtar Aminu</strong> <span class="footer-sep">&middot;</span> <span class="footer-line">Supervisor: <strong>Mr. Ibrahim Yusuf</strong></span></p>
+      <div class="footer-bar">
+        <span>&copy; 2026 AnatoMark <span class="footer-build">&middot; Build 6 Nov 2026</span></span>
+        <span class="footer-links"><a href="credits.html">Credits &amp; Privacy</a><a href="about.html#contact">Contact</a></span>
+      </div>
+    </footer>
+
+    <script>
+      /* A-Frame is loaded here only to provide three.js (GLTFLoader etc.) for the 3D viewer.
+         Same local-first, CDN-fallback rule as the AR page. */
+      (function () {
+        var l = { local: "../libs/aframe.min.js", cdn: "https://aframe.io/releases/1.5.0/aframe.min.js" };
+        var ok = false;
+        try { var x = new XMLHttpRequest(); x.open("HEAD", l.local, false); x.send();
+          ok = x.status === 200 && /javascript/i.test(x.getResponseHeader("Content-Type") || ""); } catch (e) {}
+        document.write('<script src="' + (ok ? l.local : l.cdn) + '"><\/script>');
+        document.write('<script src="../js/draco-path.js?v=20261106r5"><\/script>');
+      })();
+    </script>
+    <script src="../js/descriptions.js?v=20261106r5"></script>
+    <script src="../js/structures-data.js?v=20261106r5"></script>
+    <script src="../js/nav.js?v=20261106r5"></script>
+    <script src="../js/bone-texture.js?v=20261106r5"></script>
+    <script src="../js/ar-gestures.js?v=20261106r5"></script>
+    <script src="../js/model-viewer3d.js?v=20261106r5"></script>
+    <script src="../js/structure-detail.js?v=20261106r5"></script>
+  </body>
+</html>

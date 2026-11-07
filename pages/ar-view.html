@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <link rel="icon" href="../assets/logo/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="../assets/logo/favicon-48.png" />
+    <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png" />
+    <meta name="theme-color" content="#010a0c" />
+    <title>AR View — AnatoMark</title>
+    <link rel="stylesheet" href="../css/tokens.css?v=20261106r5" />
+    <link rel="stylesheet" href="../css/ar-view.css?v=20261106r5" />
+
+    <!-- A-Frame must load before the AR.js A-Frame build. Versions are
+         pinned on purpose — bumping either independently is the most
+         common way this stack silently breaks.
+         Each library is loaded from /libs when that file exists (works with
+         no internet, e.g. at a defense), otherwise from the CDN. -->
+    <script>
+      (function () {
+        var libs = [
+          { local: "../libs/aframe.min.js", cdn: "https://aframe.io/releases/1.5.0/aframe.min.js" },
+          { local: "../libs/aframe-ar.js", cdn: "https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js" }
+        ];
+        function localExists(url) {
+          try {
+            var x = new XMLHttpRequest();
+            x.open("HEAD", url, false); // synchronous on purpose: keeps the load order
+            x.send();
+            return x.status === 200 && /javascript/i.test(x.getResponseHeader("Content-Type") || "");
+          } catch (e) { return false; }
+        }
+        libs.forEach(function (l) {
+          var src = localExists(l.local) ? l.local : l.cdn;
+          document.write('<script src="' + src + '" onerror="window.__arLibFailed=true"><\/script>');
+        });
+        document.write('<script src="../js/draco-path.js?v=20261106r5"><\/script>'); // offline Draco decoder, if bundled
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="ar-topbar">
+      <button class="ar-back-btn" id="backBtn" aria-label="Back to structure page">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        Back
+      </button>
+      <div class="ar-structure-tag" id="structureTag">—</div>
+    </div>
+
+    <div class="ar-scan-overlay" id="scanOverlay">
+      <div class="ar-scan-ring"></div>
+      <div class="ar-scan-copy">
+        <p class="headline">Point your camera at the marker</p>
+        <p class="sub">Use your printed Hiro marker — keep it flat, fully in view and well lit.</p>
+      </div>
+    </div>
+
+    <div class="ar-loading" id="loadingPill" role="status" aria-live="polite">
+      <span class="ar-spinner" aria-hidden="true"></span>
+      <span id="loadingText">Loading 3D model…</span>
+    </div>
+
+    <div class="ar-cam-banner" id="camBanner" role="status">
+      <span>Waiting for the camera… Check the camera permission, or close other apps that are using it.</span>
+      <button type="button" id="camBannerReload">Reload</button>
+    </div>
+
+    <div class="ar-hint-bar" id="hintBar">
+      <div class="ar-hint-pill">Tap a part to label it</div>
+    </div>
+
+    <div class="ar-controls" id="arControls" role="toolbar" aria-label="AR controls">
+      <button type="button" class="ar-ctl" id="prevBtn" aria-label="Previous structure">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button type="button" class="ar-ctl" id="captureBtn" aria-label="Capture a picture">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </button>
+      <button type="button" class="ar-ctl" id="contrastBtn" aria-label="Contrast backdrop" aria-pressed="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 010 18z" fill="currentColor" stroke="none"/></svg>
+      </button>
+      <button type="button" class="ar-ctl" id="resetBtn" aria-label="Reset the view" disabled>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7M21 3v6h-6"/></svg>
+      </button>
+      <button type="button" class="ar-ctl" id="nextBtn" aria-label="Next structure">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+    <div class="ar-toast" id="arToast" role="status" aria-live="polite"></div>
+    <div class="ar-flash" id="arFlash"></div>
+
+    <div id="infoSheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div>
+          <h3 class="sheet-title" id="sheetTitle">—</h3>
+          <span class="sheet-tag" id="sheetTag">—</span>
+        </div>
+        <button class="sheet-close" id="sheetClose" aria-label="Close">✕</button>
+      </div>
+      <p class="sheet-desc" id="sheetDesc">—</p>
+    </div>
+
+    <div id="fatalError">
+      <div class="icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 16.5h.01"/><circle cx="12" cy="12" r="9"/></svg>
+      </div>
+      <h2 id="fatalTitle">Camera unavailable</h2>
+      <p id="fatalMsg">AnatoMark needs camera access to detect the marker.</p>
+      <button type="button" id="fatalRetry" hidden>Try again</button>
+      <a href="../index.html" id="fatalBackLink">← Back</a>
+    </div>
+
+    <a-scene
+      id="arScene"
+      vr-mode-ui="enabled: false"
+      renderer="antialias: true; precision: high;"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix;"
+    >
+      <!-- Explicit, moderate lights: light-coloured bones wash out to flat white under the default lighting.
+           The cool rim light from behind separates the bone's edge from white paper. -->
+      <a-light type="ambient" color="#ffffff" intensity="0.6"></a-light>
+      <a-light type="directional" color="#ffffff" intensity="0.9" position="1 3 2"></a-light>
+      <a-light type="directional" color="#bfeee6" intensity="0.5" position="-2 1 -3"></a-light>
+      <a-marker preset="hiro" id="hiroMarker" raycaster="objects: .labelable" cursor="rayOrigin: mouse; fuse: false">
+        <a-entity id="modelSlot"></a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <script src="../js/descriptions.js?v=20261106r5"></script>
+    <script src="../js/structures-data.js?v=20261106r5"></script>
+    <script src="../js/fit-math.js?v=20261106r5"></script>
+    <script src="../js/bone-texture.js?v=20261106r5"></script>
+    <script src="../js/pose-filter.js?v=20261106r5"></script>
+    <script src="../js/ar-gestures.js?v=20261106r5"></script>
+    <script src="../js/ar-view.js?v=20261106r5"></script>
+  </body>
+</html>

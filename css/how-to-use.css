@@ -1,0 +1,169 @@
+.howto-main {
+  width: min(760px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 28px 0 80px;
+}
+
+.howto-crumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+}
+
+.howto-main h1 {
+  margin: 0 0 14px;
+  color: var(--color-white);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.howto-main h1 span { color: var(--color-primary); }
+
+.howto-underline {
+  width: 56px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  margin-bottom: 34px;
+}
+
+.step-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid rgba(0, 229, 199, 0.22);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 18px;
+  background: rgba(10, 25, 25, 0.4);
+}
+
+.step-badge {
+  flex-shrink: 0;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700;
+}
+
+.step-body { flex: 1; min-width: 0; }
+.step-body h3 {
+  margin: 0 0 6px;
+  color: var(--color-white);
+  font-size: 20px;
+  font-weight: 700;
+}
+.step-body p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.step-icon {
+  flex-shrink: 0;
+  position: relative;
+  width: 72px; height: 72px;
+  display: flex; align-items: center; justify-content: center;
+}
+.step-icon svg { width: 32px; height: 32px; color: var(--color-primary); }
+.step-icon .corner { position: absolute; width: 14px; height: 14px; border: 1.6px solid var(--color-primary); opacity: 0.6; }
+.step-icon .tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+.step-icon .tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+.step-icon .bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+.step-icon .br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.tip-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  border: 1px dashed rgba(0, 229, 199, 0.4);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  margin-top: 10px;
+}
+.tip-icon { flex-shrink: 0; color: var(--color-primary); }
+.tip-body h4 {
+  margin: 0 0 6px;
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+.tip-body p { margin: 0; color: var(--color-text-muted); font-size: 13.5px; line-height: 1.55; }
+
+@media (max-width: 600px) {
+  .step-card { flex-direction: row; padding: 18px; gap: 14px; }
+  .step-icon { width: 56px; height: 56px; }
+  .step-icon svg { width: 26px; height: 26px; }
+  .step-body h3 { font-size: 17px; }
+}
+
+/* ---- step action links ---- */
+.step-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.step-link:hover, .step-link:focus-visible { text-decoration: underline; }
+
+/* ---- before you start + troubleshooting ---- */
+.howto-subtitle {
+  margin: 44px 0 14px;
+  color: var(--color-white);
+  font-size: 22px;
+  font-weight: 700;
+}
+.howto-checklist {
+  margin: 0; padding-left: 20px;
+  color: var(--color-text-muted);
+  font-size: 14px; line-height: 1.65;
+}
+.howto-checklist li { margin-bottom: 8px; }
+.howto-checklist strong { color: var(--color-white); }
+
+.howto-faq details {
+  border: 1px solid rgba(0, 229, 199, 0.2);
+  border-radius: var(--radius-md);
+  background: rgba(10, 25, 25, 0.4);
+  margin-bottom: 10px;
+}
+.howto-faq summary {
+  padding: 16px 18px;
+  color: var(--color-white);
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+}
+.howto-faq summary::-webkit-details-marker { display: none; }
+.howto-faq summary::after { content: "+"; color: var(--color-primary); font-size: 20px; line-height: 1; flex-shrink: 0; }
+.howto-faq details[open] summary::after { content: "\2212"; }
+.howto-faq details p {
+  margin: 0; padding: 0 18px 16px;
+  color: var(--color-text-muted);
+  font-size: 13.5px; line-height: 1.6;
+}
+.howto-faq em { color: var(--color-white); font-style: normal; font-weight: 600; }
+
+
+/* three short tips instead of one long one */
+.tip-card + .tip-card { margin-top: 10px; }
+.howto-cta { margin: 28px 0 8px; text-align: center; }
+.howto-cta .step-link { font-size: 15px; }

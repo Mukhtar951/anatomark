@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/logo/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="../assets/logo/favicon-48.png" />
+    <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png" />
+    <meta name="theme-color" content="#010a0c" />
+    <title>About — AnatoMark</title>
+    <meta name="description" content="About AnatoMark, a final-year Human Anatomy project from Northwest University Kano." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AnatoMark" />
+    <meta property="og:title" content="About — AnatoMark" />
+    <meta property="og:description" content="About AnatoMark, a final-year Human Anatomy project from Northwest University Kano." />
+    <link rel="canonical" href="https://anatomark.com/pages/about.html" />
+    <meta property="og:url" content="https://anatomark.com/pages/about.html" />
+    <meta property="og:image" content="https://anatomark.com/assets/images/og-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AnatoMark: a glowing 3D skull beside the words AnatoMark, augmented reality human anatomy" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="About — AnatoMark" />
+    <meta name="twitter:description" content="About AnatoMark, a final-year Human Anatomy project from Northwest University Kano." />
+    <meta name="twitter:image" content="https://anatomark.com/assets/images/og-card.png" />
+    <link rel="stylesheet" href="../css/tokens.css?v=20261106r5" />
+    <link rel="stylesheet" href="../css/nav.css?v=20261106r5" />
+    <link rel="stylesheet" href="../css/footer.css?v=20261106r5" />
+    <link rel="stylesheet" href="../css/about.css?v=20261106r5" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="../index.html" class="brand" aria-label="AnatoMark Home">
+          <img src="../assets/logo/logo-mark.png" alt="" class="brand-logo" width="26" height="32" />
+          <span class="brand-text">Anato<span>Mark</span></span>
+        </a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link active">About</a>
+          <a href="how-to-use.html" class="nav-link">How To Use</a>
+          <a href="download-marker.html" class="nav-link">Download Marker</a>
+        </nav>
+        <button type="button" class="mobile-menu-button" id="mobileMenuButton" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+        <a href="../index.html" class="mobile-nav-link">Home</a>
+        <a href="about.html" class="mobile-nav-link active">About</a>
+        <a href="how-to-use.html" class="mobile-nav-link">How To Use</a>
+        <a href="download-marker.html" class="mobile-nav-link">Download Marker</a>
+      </nav>
+    </header>
+
+    <main class="about-main">
+      <div class="about-crumb">
+        <a href="../index.html" class="back-btn" aria-label="Back"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+        <span>ABOUT</span>
+      </div>
+
+      <h1>About Anato<span>Mark</span></h1>
+
+      <div class="about-layout">
+        <div class="about-intro">
+          <p class="about-lead">
+            AnatoMark is a web-based Augmented Reality platform designed to make anatomy
+            education more interactive, visual, and accessible. Point a phone camera at a
+            printed marker and an interactive 3D structure appears instantly — no app install
+            required.
+          </p>
+          <p class="about-lead">
+            This project is developed as a final year Human Anatomy project.
+          </p>
+        </div>
+
+        <aside class="about-side" aria-label="Project details">
+          <div class="about-card">
+            <span class="corner tl"></span><span class="corner br"></span>
+            <div id="aboutRows"></div>
+          </div>
+        </aside>
+
+        <div class="about-text">
+          <h2 class="about-section-title" id="aim">Aim of the project</h2>
+          <p class="about-lead">
+            To design and build AnatoMark, a web-based augmented reality platform that lets
+            students study skeletal anatomy as interactive 3D models on their own phones,
+            using only a browser and a printed marker.
+          </p>
+          <p class="about-objectives-title">Objectives</p>
+          <ol class="about-objectives">
+            <li>To present bones of the skeletal system as accurate 3D models that appear on a printed marker.</li>
+            <li>To help students understand the shape and spatial relationships of bones by letting them rotate, zoom and label each structure.</li>
+            <li>To remove barriers to access: no app to install, one marker for every structure, and a design that works on low-cost phones and ordinary mobile data.</li>
+            <li>To provide a clear library of structures with short descriptions, so that AR supports revision as well as exploration.</li>
+            <li>To build the platform so that other body systems can be added later.</li>
+          </ol>
+
+          <h2 class="about-section-title">What you can do</h2>
+          <div class="about-features">
+            <div class="about-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 11-3-6.7"/><polyline points="21 3 21 9 15 9"/></svg>
+              <div><h3>Rotate and zoom in 3D</h3><p>Turn a bone with one finger and pinch to look closer.</p></div>
+            </div>
+            <div class="about-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L2.6 12.6a2 2 0 010-2.8l7.2-7.2A2 2 0 0111.2 2H18a2 2 0 012 2v6.8z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg>
+              <div><h3>Tap to see the name</h3><p>Tap a bone to read its name and description.</p></div>
+            </div>
+            <div class="about-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+              <div><h3>No app to install</h3><p>Runs in your phone's browser, nothing to download.</p></div>
+            </div>
+            <div class="about-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8V3h5M21 8V3h-5M3 16v5h5M21 16v5h-5"/><circle cx="12" cy="12" r="2.5"/></svg>
+              <div><h3>One marker for everything</h3><p>Print once and use it for every structure.</p></div>
+            </div>
+          </div>
+
+          <h2 class="about-section-title">Why AR for Anatomy</h2>
+          <p class="about-lead">
+            Anatomy is best understood when seen in 3D. AR brings static diagrams to life,
+            helping students explore structures from any angle.
+          </p>
+          <p class="about-lead">
+            It improves spatial understanding, enhances memory retention, and makes learning
+            more engaging and accessible for all.
+          </p>
+
+          <h2 class="about-section-title">Built with</h2>
+          <ul class="about-tags" aria-label="Technologies used">
+            <li>AR.js</li><li>A-Frame</li><li>Three.js</li><li>WebAR</li>
+          </ul>
+
+          <!-- PROJECT REPORT LINK — hidden until the project is complete.
+               Restore by un-commenting and replacing # with the real URL:
+          <a href="#" class="about-report-link">Read the full project report →</a>
+          -->
+          <h2 class="about-section-title" id="contact">Contact</h2>
+          <p class="about-lead">Questions, feedback, or a problem with the AR view? Get in touch.</p>
+          <div class="contact-list" id="contactActions"></div>
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brandcol">
+          <p class="footer-brand">Anato<span>Mark</span></p>
+          <p class="footer-tag">See anatomy come to life in augmented reality.</p>
+        </div>
+        <nav class="footer-col" aria-label="Explore">
+          <h2>Explore</h2>
+          <a href="../index.html">Home</a>
+          <a href="library.html">Library</a>
+          <a href="how-to-use.html">How To Use</a>
+          <a href="download-marker.html">Download Marker</a>
+          <a href="about.html">About</a>
+        </nav>
+        <div class="footer-col">
+          <h2>Project</h2>
+          <span>Final year project</span>
+          <span>Department of Human Anatomy</span>
+          <span>Northwest University Kano</span>
+          <span>Session 2025/2026</span>
+        </div>
+      </div>
+      <p class="footer-credits">Student: <strong>Mukhtar Aminu</strong> <span class="footer-sep">&middot;</span> <span class="footer-line">Supervisor: <strong>Mr. Ibrahim Yusuf</strong></span></p>
+      <div class="footer-bar">
+        <span>&copy; 2026 AnatoMark <span class="footer-build">&middot; Build 6 Nov 2026</span></span>
+        <span class="footer-links"><a href="credits.html">Credits &amp; Privacy</a><a href="about.html#contact">Contact</a></span>
+      </div>
+    </footer>
+
+    <script src="../js/site-config.js?v=20261106r5"></script>
+    <script src="../js/nav.js?v=20261106r5"></script>
+    <script src="../js/about-card.js?v=20261106r5"></script>
+    <script src="../js/contact.js?v=20261106r5"></script>
+  </body>
+</html>

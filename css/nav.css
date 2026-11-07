@@ -1,0 +1,441 @@
+/* =========================================================
+   ANATOMARK NAVIGATION
+   ========================================================= */
+
+.site-header {
+
+  position: relative;
+
+  z-index: 100;
+
+  width: 100%;
+
+  background:
+    rgba(5, 15, 17, 0.78);
+
+  border-bottom:
+    1px solid
+    rgba(0, 229, 199, 0.07);
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+
+}
+
+
+.header-inner {
+
+  width:
+    min(
+      1400px,
+      calc(100% - 80px)
+    );
+
+  height: 88px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  flex-shrink: 0;
+
+  text-decoration: none;
+
+}
+
+
+.brand-logo {
+
+  display: block;
+
+  width: auto;
+
+  height: 32px;
+
+  width: auto;
+
+  object-fit: contain;
+
+}
+
+.brand { gap: 10px; }
+
+.brand-text {
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  color: var(--color-white, #fff);
+}
+
+.brand-text span { color: var(--color-primary); }
+
+
+/* =========================================================
+   DESKTOP NAVIGATION
+   ========================================================= */
+
+.desktop-nav {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 34px;
+
+}
+
+
+.nav-link {
+
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  height: 88px;
+
+  color:
+    rgba(235, 255, 252, 0.62);
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition:
+    color 180ms ease;
+
+}
+
+
+.nav-link::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  right: 0;
+
+  bottom: 0;
+
+  height: 2px;
+
+  background: #00e5c7;
+
+  transform:
+    scaleX(0);
+
+  transform-origin: center;
+
+  transition:
+    transform 180ms ease;
+
+}
+
+
+.nav-link:hover {
+
+  color: #00e5c7;
+
+}
+
+
+.nav-link:hover::after {
+
+  transform:
+    scaleX(1);
+
+}
+
+
+.nav-link.active {
+
+  color: #00e5c7;
+
+}
+
+
+.nav-link.active::after {
+
+  transform:
+    scaleX(1);
+
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   ========================================================= */
+
+.mobile-menu-button {
+
+  /*
+   * Hidden by default.
+   *
+   * This guarantees it does NOT appear
+   * on desktop.
+   */
+
+  display: none;
+
+  width: 42px;
+
+  height: 42px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 5px;
+
+}
+
+
+.mobile-menu-button span {
+
+  display: block;
+
+  width: 22px;
+
+  height: 1.5px;
+
+  background: #00e5c7;
+
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+
+}
+
+
+/* =========================================================
+   MOBILE NAV
+   ========================================================= */
+
+.mobile-nav {
+
+  /*
+   * Hidden on desktop.
+   */
+
+  display: none;
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) and (min-width: 768px) {
+
+  .header-inner {
+
+    width:
+      calc(100% - 48px);
+
+  }
+
+  .desktop-nav {
+
+    gap: 22px;
+
+  }
+
+  .nav-link {
+
+    font-size: 11px;
+
+  }
+
+}
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+  .header-inner {
+    width: calc(100% - 32px);
+    height: 68px;
+  }
+
+
+  .brand-logo { height: 28px; }
+  .brand-text { font-size: 17px; }
+
+
+  /* -----------------------------------------
+     DESKTOP NAVIGATION
+     ----------------------------------------- */
+
+  .desktop-nav {
+    display: none;
+  }
+
+
+  /* -----------------------------------------
+     HAMBURGER
+     ----------------------------------------- */
+
+  .mobile-menu-button {
+    display: flex;
+  }
+
+
+  /* -----------------------------------------
+     MOBILE NAVIGATION
+     
+     CLOSED BY DEFAULT
+     ----------------------------------------- */
+
+  .mobile-nav {
+    display: none;
+
+    width: 100%;
+
+    flex-direction: column;
+
+    padding:
+      8px 16px 18px;
+
+    background:
+      rgba(5, 15, 17, 0.97);
+
+    border-top:
+      1px solid
+      rgba(0, 229, 199, 0.08);
+
+    box-shadow:
+      0 20px 40px
+      rgba(0, 0, 0, 0.3);
+  }
+
+
+  /* -----------------------------------------
+     OPEN STATE
+     ----------------------------------------- */
+
+  .mobile-nav.open {
+    display: flex;
+  }
+
+
+  /* -----------------------------------------
+     MOBILE LINKS
+     ----------------------------------------- */
+
+  .mobile-nav-link {
+
+    display: block;
+
+    padding:
+      15px 8px;
+
+    color:
+      rgba(235, 255, 252, 0.7);
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    border-bottom:
+      1px solid
+      rgba(0, 229, 199, 0.06);
+  }
+
+
+  .mobile-nav-link:last-child {
+    border-bottom: 0;
+  }
+
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link.active {
+    color: #00e5c7;
+  }
+
+
+  /* -----------------------------------------
+     HAMBURGER → X
+     ----------------------------------------- */
+
+  .mobile-menu-button.active span:nth-child(1) {
+    transform:
+      translateY(6.5px)
+      rotate(45deg);
+  }
+
+
+  .mobile-menu-button.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+
+  .mobile-menu-button.active span:nth-child(3) {
+    transform:
+      translateY(-6.5px)
+      rotate(-45deg);
+  }
+
+}
+
+/* =========================================================
+   BACK BUTTON — one round button, arrow drawn as an SVG so it is
+   exactly centred (a text arrow sits low and off-centre, and its
+   size depends on the font). 44px is the minimum comfortable tap size.
+   ========================================================= */
+.back-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  flex: 0 0 auto; width: 44px; height: 44px; padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 229, 199, 0.35);
+  background: rgba(0, 229, 199, 0.06);
+  color: var(--color-primary);
+  text-decoration: none; line-height: 0;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+.back-btn svg { display: block; }
+.back-btn:hover { background: rgba(0, 229, 199, 0.14); border-color: rgba(0, 229, 199, 0.7); }
+.back-btn:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+.about-crumb, .marker-crumb, .howto-crumb, .library-crumb, .detail-crumb { gap: 12px; align-items: center; }

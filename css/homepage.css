@@ -1,0 +1,1351 @@
+/* =========================================================
+   ANATOMARK HOMEPAGE
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+body {
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+
+  width: min(
+    1400px,
+    calc(100% - 80px)
+  );
+
+  min-height: calc(100svh - 88px);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.88fr)
+    minmax(0, 1.12fr);
+
+  align-items: center;
+
+  column-gap: 40px;
+
+  padding:
+    40px 0
+    70px;
+
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.hero-content {
+
+  position: relative;
+
+  z-index: 5;
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+}
+
+
+.hero-eyebrow {
+
+  margin: 0 0 18px;
+
+  color: #00e5c7;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+
+  line-height: 1.4;
+
+}
+
+
+.hero-eyebrow span {
+
+  opacity: 0.65;
+
+}
+
+
+.hero-title {
+
+  margin: 0;
+
+  color: #f1fffd;
+
+  font-size:
+    clamp(58px, 6.5vw, 102px);
+
+  font-weight: 700;
+
+  line-height: 0.92;
+
+  letter-spacing: -0.055em;
+
+}
+
+
+.hero-title span {
+
+  color: #00e5c7;
+
+}
+
+
+.hero-description {
+
+  margin:
+    26px 0
+    32px;
+
+  max-width: 470px;
+
+  color:
+    rgba(232, 255, 252, 0.72);
+
+  font-size:
+    clamp(16px, 1.4vw, 20px);
+
+  line-height: 1.6;
+
+}
+
+
+.desktop-break {
+  display: block;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+   ========================================================= */
+
+.hero-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+}
+
+
+.hero-button {
+
+  min-height: 52px;
+
+  padding:
+    0 21px;
+
+  border-radius: 8px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+
+}
+
+
+.hero-button:hover {
+
+  transform:
+    translateY(-2px);
+
+}
+
+
+.hero-button-primary {
+
+  color: #001411;
+
+  background: #00e5c7;
+
+  border:
+    1px solid #00e5c7;
+
+  box-shadow:
+    0 0 24px
+    rgba(0, 229, 199, 0.13);
+
+}
+
+
+.hero-button-primary:hover {
+
+  box-shadow:
+    0 0 34px
+    rgba(0, 229, 199, 0.28);
+
+}
+
+
+.hero-button-secondary {
+
+  color: #00e5c7;
+
+  background:
+    rgba(0, 229, 199, 0.025);
+
+  border:
+    1px solid
+    rgba(0, 229, 199, 0.52);
+
+}
+
+
+.hero-button-secondary:hover {
+
+  background:
+    rgba(0, 229, 199, 0.075);
+
+}
+
+
+.button-icon {
+
+  font-size: 17px;
+
+  line-height: 1;
+
+}
+
+
+/* =========================================================
+   HERO VISUAL
+   ========================================================= */
+
+.hero-visual {
+
+  position: relative;
+
+  min-width: 0;
+
+  height:
+    min(
+      650px,
+      calc(100svh - 120px)
+    );
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+
+.scan-frame {
+
+  position: relative;
+
+  width:
+    min(
+      620px,
+      100%
+    );
+
+  height:
+    min(
+      620px,
+      100%
+    );
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+
+/* =========================================================
+   SKULL
+   ========================================================= */
+
+.hero-skull {
+
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  width: auto;
+
+  height:
+    min(
+      570px,
+      88%
+    );
+
+  max-width: 88%;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 0 12px
+      rgba(0, 229, 199, 0.25)
+    )
+    drop-shadow(
+      0 0 55px
+      rgba(0, 229, 199, 0.08)
+    );
+
+}
+
+
+/* =========================================================
+   SCAN FRAME
+   ========================================================= */
+
+.scan-corner {
+
+  position: absolute;
+
+  z-index: 4;
+
+  width: 68px;
+
+  height: 68px;
+
+  border-color:
+    rgba(0, 229, 199, 0.72);
+
+  border-style: solid;
+
+}
+
+
+.scan-corner-top-left {
+
+  top: 7%;
+
+  left: 7%;
+
+  border-width:
+    2px 0 0 2px;
+
+}
+
+
+.scan-corner-top-right {
+
+  top: 7%;
+
+  right: 7%;
+
+  border-width:
+    2px 2px 0 0;
+
+}
+
+
+.scan-corner-bottom-left {
+
+  bottom: 7%;
+
+  left: 7%;
+
+  border-width:
+    0 0 2px 2px;
+
+}
+
+
+.scan-corner-bottom-right {
+
+  bottom: 7%;
+
+  right: 7%;
+
+  border-width:
+    0 2px 2px 0;
+
+}
+
+
+/* =========================================================
+   SCAN LINE
+   ========================================================= */
+
+.scan-line {
+
+  position: absolute;
+
+  z-index: 5;
+
+  left: 12%;
+
+  right: 12%;
+
+  top: 50%;
+
+  height: 1px;
+
+  background:
+    rgba(0, 229, 199, 0.18);
+
+  box-shadow:
+    0 0 14px
+    rgba(0, 229, 199, 0.2);
+
+}
+
+
+/* =========================================================
+   STRUCTURES SECTION
+   ========================================================= */
+
+.structures-section {
+
+  width:
+    min(
+      1400px,
+      calc(100% - 80px)
+    );
+
+  margin:
+    0 auto;
+
+  padding:
+    60px 0
+    100px;
+
+}
+
+
+.section-heading {
+
+  margin-bottom: 28px;
+
+}
+
+
+.section-eyebrow {
+
+  margin: 0 0 8px;
+
+  color: #00e5c7;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+
+  letter-spacing: 0.18em;
+
+}
+
+
+.section-heading h2 {
+
+  margin: 0;
+
+  color: #effffc;
+
+  font-size:
+    clamp(28px, 3vw, 42px);
+
+  line-height: 1.1;
+
+}
+
+/* =========================================================
+   STRUCTURE GRID
+   ========================================================= */
+
+.structure-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+}
+
+
+/* =========================================================
+   STRUCTURE CARD
+   ========================================================= */
+
+.structure-card {
+
+  position: relative;
+
+  min-width: 0;
+
+  min-height: 210px;
+
+  padding: 18px;
+
+  display: grid;
+
+  grid-template-columns:
+    105px
+    minmax(0, 1fr)
+    42px;
+
+  align-items: center;
+
+  gap: 15px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(0, 229, 199, 0.13);
+
+  border-radius: 14px;
+
+  background:
+    rgba(10, 25, 25, 0.72);
+
+  text-decoration: none;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+
+.structure-card:hover {
+
+  transform:
+    translateY(-4px);
+
+  border-color:
+    rgba(0, 229, 199, 0.4);
+
+  background:
+    rgba(10, 30, 29, 0.9);
+}
+
+
+/* =========================================================
+   STRUCTURE IMAGE
+   ========================================================= */
+
+.structure-image {
+
+  position: relative;
+
+  width: 105px;
+
+  height: 150px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+
+.structure-image img {
+
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: contain;
+
+  opacity: 0.78;
+}
+
+
+/* =========================================================
+   STRUCTURE INFORMATION
+   ========================================================= */
+
+.structure-info {
+
+  position: relative;
+
+  z-index: 2;
+
+  min-width: 0;
+
+  width: auto;
+}
+
+
+.structure-meta {
+
+  margin-bottom: 7px;
+}
+
+
+.structure-type {
+
+  display: inline-flex;
+
+  padding:
+    4px 7px;
+
+  border:
+    1px solid
+    rgba(0, 229, 199, 0.3);
+
+  border-radius: 4px;
+
+  color: #00e5c7;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 0.1em;
+}
+
+
+.structure-card h3 {
+
+  margin:
+    0 0 6px;
+
+  color: #f0fffd;
+
+  font-size: 18px;
+
+  line-height: 1.2;
+}
+
+
+.structure-card p {
+
+  margin: 0;
+
+  color:
+    rgba(232, 255, 252, 0.55);
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   STRUCTURE ARROW
+   ========================================================= */
+
+.structure-arrow {
+
+  position: relative;
+
+  right: auto;
+
+  bottom: auto;
+
+  z-index: 3;
+
+  width: 38px;
+
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border:
+    1px solid
+    rgba(0, 229, 199, 0.4);
+
+  border-radius: 50%;
+
+  color: #00e5c7;
+
+  font-size: 17px;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+
+.structure-card:hover .structure-arrow {
+
+  transform:
+    translateX(3px);
+
+  background:
+    rgba(0, 229, 199, 0.08);
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+  .hero {
+
+    width:
+      calc(100% - 48px);
+
+    grid-template-columns:
+      minmax(0, 0.9fr)
+      minmax(0, 1.1fr);
+
+    gap: 15px;
+
+    padding:
+      30px 0
+      55px;
+
+  }
+
+
+  .hero-title {
+
+    font-size:
+      clamp(52px, 7vw, 76px);
+
+  }
+
+
+  .hero-description {
+
+    font-size: 16px;
+
+    margin:
+      20px 0
+      25px;
+
+  }
+
+
+  .hero-visual {
+
+    height:
+      min(
+        540px,
+        calc(100svh - 120px)
+      );
+
+  }
+
+
+  .hero-skull {
+
+    height: 85%;
+
+  }
+
+
+  .scan-corner {
+
+    width: 52px;
+
+    height: 52px;
+
+  }
+
+
+  .structures-section {
+
+    width:
+      calc(100% - 48px);
+
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+  .structure-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+  }
+
+
+  .structure-card {
+
+    min-height: 135px;
+
+    padding: 14px;
+
+    grid-template-columns:
+      82px
+      minmax(0, 1fr)
+      38px;
+
+    gap: 12px;
+
+  }
+
+
+  .structure-image {
+
+    width: 82px;
+
+    height: 105px;
+
+  }
+
+
+  .structure-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+  }
+
+
+  .structure-card h3 {
+
+    font-size: 17px;
+
+  }
+
+
+  .structure-card p {
+
+    font-size: 10px;
+
+    line-height: 1.45;
+
+  }
+
+
+  .structure-arrow {
+
+    width: 34px;
+
+    height: 34px;
+
+    font-size: 15px;
+
+  }
+
+}
+
+
+/* =========================================================
+   SHORT MOBILE SCREENS
+   ========================================================= */
+
+@media (max-width: 767px) and (max-height: 700px) {
+
+
+  .hero {
+
+    padding:
+      16px 0
+      30px;
+
+  }
+
+
+  .hero-eyebrow {
+
+    margin-bottom: 6px;
+
+  }
+
+
+  .hero-title {
+
+    font-size:
+      45px;
+
+  }
+
+
+  .hero-description {
+
+    margin:
+      9px auto
+      11px;
+
+    font-size:
+      12px;
+
+  }
+
+
+  .hero-visual {
+
+    height:
+      175px;
+
+    min-height:
+      175px;
+
+    max-height:
+      175px;
+
+  }
+
+
+  .hero-skull {
+
+    height:
+      165px;
+
+  }
+
+
+  .scan-corner {
+
+    width: 34px;
+
+    height: 34px;
+
+  }
+
+
+  .hero-button {
+
+    min-height:
+      43px;
+
+  }
+
+}
+
+
+/* =========================================================
+   VERY NARROW PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .hero {
+
+    width:
+      calc(100% - 24px);
+
+  }
+
+
+  .hero-title {
+
+    font-size:
+      43px;
+
+  }
+
+
+  .hero-visual {
+
+    height:
+      180px;
+
+  }
+
+
+  .hero-skull {
+
+    height:
+      165px;
+
+  }
+
+
+  .structures-section {
+
+    width:
+      calc(100% - 24px);
+
+  }
+
+}
+
+/* =========================================================
+   FINAL MOBILE HERO OVERRIDE
+   IMPORTANT: KEEP THIS AT THE VERY BOTTOM OF HOMEPAGE.CSS
+   ========================================================= */
+
+@media screen and (max-width: 767px) {
+
+  /* Force the entire hero into ONE vertical column */
+  section.hero {
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+
+    justify-content: flex-start !important;
+
+    width: calc(100% - 32px) !important;
+
+    min-height: auto !important;
+
+    height: auto !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    gap: 0 !important;
+
+  }
+
+
+  /* -----------------------------------------
+     TEXT BLOCK
+     ----------------------------------------- */
+
+  /* .hero-content stops being its own box here — this lets its
+     children (eyebrow, title, description, actions) become direct
+     flex items of section.hero, each individually orderable below.
+     Without this, "order" on .hero-content moves the WHOLE block
+     (title + description + buttons) as one unit, which is what was
+     pushing the buttons above the skull — order only reorders direct
+     children, not nested descendants. */
+  section.hero .hero-content {
+
+    display: contents !important;
+
+  }
+
+
+  /* Eyebrow */
+
+  section.hero .hero-eyebrow {
+
+    display: block !important;
+
+    width: 100% !important;
+
+    margin:
+      0 0 10px !important;
+
+    text-align: center !important;
+
+    order: 1 !important;
+
+  }
+
+
+  /* Title */
+
+  section.hero .hero-title {
+
+    display: block !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+
+    text-align: center !important;
+
+    order: 1 !important;
+
+  }
+
+
+  /* Description */
+
+  section.hero .hero-description {
+
+    display: block !important;
+
+    width: 100% !important;
+
+    margin:
+      14px auto 16px !important;
+
+    text-align: center !important;
+
+    order: 3 !important;
+
+  }
+
+
+  /* -----------------------------------------
+     SKULL
+     ----------------------------------------- */
+
+  section.hero .hero-visual {
+
+    width: 100% !important;
+
+    height: 220px !important;
+
+    min-height: 220px !important;
+
+    max-height: 220px !important;
+
+    margin: 0 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    order: 2 !important;
+
+  }
+
+
+  section.hero .scan-frame {
+
+    width: 100% !important;
+
+    max-width: 320px !important;
+
+    height: 100% !important;
+
+    margin: 0 auto !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+  }
+
+
+  section.hero .hero-skull {
+
+    display: block !important;
+
+    width: auto !important;
+
+    height: 200px !important;
+
+    max-width: 80% !important;
+
+    object-fit: contain !important;
+
+    margin: 0 auto !important;
+
+  }
+
+
+  /* -----------------------------------------
+     BUTTONS
+     ----------------------------------------- */
+
+  section.hero .hero-actions {
+
+    width: 100% !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: stretch !important;
+
+    justify-content: flex-start !important;
+
+    gap: 9px !important;
+
+    margin: 0 !important;
+
+    order: 4 !important;
+
+  }
+
+
+  section.hero .hero-button {
+
+    width: 100% !important;
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    min-height: 47px !important;
+
+  }
+
+}
+
+/* =========================================================
+   HERO MOTION (transparent skull)
+   The skull is a cut-out PNG/WebP, so a soft glow, a gentle
+   float and a slow sway can be applied without a box showing.
+   ========================================================= */
+
+.scan-frame { perspective: 900px; }
+
+.hero-skull {
+  animation:
+    skull-float 6s ease-in-out infinite,
+    skull-sway 9s ease-in-out infinite;
+  transform-origin: 50% 55%;
+  will-change: transform;
+}
+
+.scan-line {
+  animation: scan-sweep 4.5s ease-in-out infinite;
+}
+
+@keyframes skull-float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -10px; }
+}
+
+@keyframes skull-sway {
+  0%, 100% { transform: rotateY(-14deg); }
+  50%      { transform: rotateY(14deg); }
+}
+
+@keyframes scan-sweep {
+  0%   { top: 12%; opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { top: 88%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-skull, .scan-line { animation: none; }
+}
+
+/* =========================================================
+   HOW IT WORKS STRIP
+   ========================================================= */
+
+.how-strip {
+  width: min(1400px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 40px 0 0;
+}
+
+.how-strip-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.how-strip-card {
+  position: relative;
+  padding: 22px 22px 22px 70px;
+  border: 1px solid rgba(0, 229, 199, 0.18);
+  border-radius: var(--radius-lg, 16px);
+  background: rgba(7, 22, 25, 0.6);
+}
+
+.how-strip-num {
+  position: absolute;
+  left: 20px;
+  top: 22px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.how-strip-card h3 { margin: 0 0 6px; font-size: 16px; color: var(--color-white, #fff); }
+.how-strip-card p { margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--color-text-muted); }
+
+.how-strip-link { margin: 16px 0 0; text-align: center; font-size: 14px; }
+.how-strip-link a { color: var(--color-primary); text-decoration: none; font-weight: 600; }
+.how-strip-link a:hover { text-decoration: underline; }
+
+@media (max-width: 860px) {
+  .how-strip { width: calc(100% - 32px); padding-top: 28px; }
+  .how-strip-grid { grid-template-columns: 1fr; gap: 10px; }
+  .how-strip-card { padding: 16px 16px 16px 62px; }
+  .how-strip-num { top: 16px; left: 16px; }
+}
+
+/* photos with black backgrounds drop out against the dark cards */
+.structure-image img { mix-blend-mode: screen; }
+
+/* Tagline: three tones so the eye lands on the key words */
+.hero-description .tg-see { color: #ffffff; font-weight: 700; }
+.hero-description .tg-life { color: #00e5c7; font-weight: 700; }
+.hero-description .tg-ar { color: rgba(232, 255, 252, 0.62); font-weight: 400; }
+/* the longer caption must still fit on one line on a phone */
+@media (max-width: 480px) {
+  .hero-eyebrow, section.hero .hero-eyebrow { letter-spacing: 0.1em !important; font-size: 11px !important; }
+}

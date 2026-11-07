@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/logo/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/logo/favicon-48.png" />
+    <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png" />
+    <meta name="theme-color" content="#010a0c" />
+
+    <title>AnatoMark | AR Anatomy Education</title>
+    <meta name="description" content="Learn human anatomy in augmented reality. Point your phone at a printed marker and explore 3D bones. No app to install." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AnatoMark" />
+    <meta property="og:title" content="AnatoMark | AR Anatomy Education" />
+    <meta property="og:description" content="Learn human anatomy in augmented reality. Point your phone at a printed marker and explore 3D bones. No app to install." />
+    <link rel="canonical" href="https://anatomark.com/" />
+    <meta property="og:url" content="https://anatomark.com/" />
+    <meta property="og:image" content="https://anatomark.com/assets/images/og-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AnatoMark: a glowing 3D skull beside the words AnatoMark, augmented reality human anatomy" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AnatoMark | AR Anatomy Education" />
+    <meta name="twitter:description" content="Learn human anatomy in augmented reality. Point your phone at a printed marker and explore 3D bones. No app to install." />
+    <meta name="twitter:image" content="https://anatomark.com/assets/images/og-card.png" />
+
+    <link rel="stylesheet" href="css/tokens.css?v=20261106r5" />
+    <link rel="stylesheet" href="css/nav.css?v=20261106r5" />
+    <link rel="stylesheet" href="css/footer.css?v=20261106r5" />
+    <link rel="stylesheet" href="css/homepage.css?v=20261106r5" />
+    <link rel="stylesheet" href="css/picker.css?v=20261106r5" />
+  </head>
+
+  <body>
+    <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+    <header class="site-header">
+      <div class="header-inner">
+        <!-- Logo -->
+        <a href="index.html" class="brand" aria-label="AnatoMark Home">
+          <img src="assets/logo/logo-mark.png" alt="" class="brand-logo" width="26" height="32" />
+          <span class="brand-text">Anato<span>Mark</span></span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="index.html" class="nav-link active"> Home </a>
+
+          <a href="pages/about.html" class="nav-link"> About </a>
+
+          <a href="pages/how-to-use.html" class="nav-link"> How To Use </a>
+
+          <a href="pages/download-marker.html" class="nav-link">
+            Download Marker
+          </a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button
+          type="button"
+          class="mobile-menu-button"
+          id="mobileMenuButton"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+        <a href="index.html" class="mobile-nav-link active"> Home </a>
+
+        <a href="pages/about.html" class="mobile-nav-link"> About </a>
+
+        <a href="pages/how-to-use.html" class="mobile-nav-link"> How To Use </a>
+
+        <a href="pages/download-marker.html" class="mobile-nav-link">
+          Download Marker
+        </a>
+      </nav>
+    </header>
+
+    <!-- =====================================================
+       MAIN
+       ===================================================== -->
+
+    <main>
+      <!-- ===================================================
+         HERO
+         =================================================== -->
+
+      <section class="hero">
+        <!-- LEFT / TOP CONTENT -->
+
+        <div class="hero-content">
+          <p class="hero-eyebrow">
+            <span>[</span>
+            AUGMENTED REALITY &middot; HUMAN ANATOMY
+            <span>]</span>
+          </p>
+
+          <h1 class="hero-title">Anato<span>Mark</span></h1>
+
+          <p class="hero-description">
+            <span class="tg-see">See anatomy.</span>
+            <span class="tg-life">Understand life.</span>
+            <br class="desktop-break" />
+            <span class="tg-ar">In augmented reality.</span>
+          </p>
+
+          <div class="hero-actions">
+            <button
+              type="button"
+              class="hero-button hero-button-primary"
+              id="scanMarkerButton"
+            >
+              <span class="button-icon" aria-hidden="true"> ⌗ </span>
+
+              <span> Scan Marker </span>
+            </button>
+
+            <a
+              href="pages/library.html"
+              class="hero-button hero-button-secondary"
+            >
+              <span class="button-icon" aria-hidden="true"> ▤ </span>
+
+              <span> Explore Library </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT / BOTTOM VISUAL -->
+
+        <div class="hero-visual">
+          <div class="scan-frame">
+            <!-- Targeting corners -->
+
+            <span class="scan-corner scan-corner-top-left"></span>
+
+            <span class="scan-corner scan-corner-top-right"></span>
+
+            <span class="scan-corner scan-corner-bottom-left"></span>
+
+            <span class="scan-corner scan-corner-bottom-right"></span>
+
+            <!-- Horizontal scanning line -->
+
+            <span class="scan-line"></span>
+
+            <!-- Skull -->
+
+            <img
+              src="assets/images/skull-hero.webp"
+              width="563"
+              height="820"
+              alt="Human skull in augmented reality"
+              class="hero-skull"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================
+         HOW IT WORKS
+         =================================================== -->
+
+      <section class="how-strip" aria-labelledby="howStripTitle">
+        <div class="section-heading">
+          <p class="section-eyebrow">HOW IT WORKS</p>
+          <h2 id="howStripTitle">Three steps to AR</h2>
+        </div>
+
+        <ol class="how-strip-grid">
+          <li class="how-strip-card">
+            <span class="how-strip-num" aria-hidden="true">1</span>
+            <h3>Print the marker</h3>
+            <p>One free marker works for every structure.</p>
+          </li>
+          <li class="how-strip-card">
+            <span class="how-strip-num" aria-hidden="true">2</span>
+            <h3>Pick a structure</h3>
+            <p>Choose a bone from the library.</p>
+          </li>
+          <li class="how-strip-card">
+            <span class="how-strip-num" aria-hidden="true">3</span>
+            <h3>Point your camera</h3>
+            <p>Aim at the marker and the 3D model appears.</p>
+          </li>
+        </ol>
+
+        <p class="how-strip-link"><a href="pages/how-to-use.html">Read the full guide &rarr;</a></p>
+      </section>
+
+      <!-- ===================================================
+         STRUCTURES
+         =================================================== -->
+
+      <section class="structures-section">
+        <div class="section-heading">
+          <p class="section-eyebrow">EXPLORE ANATOMY</p>
+
+          <h2>Learn anatomy in 3D</h2>
+        </div>
+
+        <div class="structure-grid">
+          <!-- Human Skull -->
+
+          <a
+            href="pages/structure-detail.html?id=skull&from=home"
+            class="structure-card"
+          >
+            <div class="structure-image">
+              <img src="assets/icons/skull.webp" data-fallback="assets/images/skull.webp" onerror="this.onerror=null;this.src=this.getAttribute('data-fallback')" alt="Human Skull" loading="lazy" decoding="async" />
+            </div>
+
+            <div class="structure-info">
+              <div class="structure-meta">
+                <span class="structure-type"> BONE </span>
+              </div>
+
+              <h3>Human Skull</h3>
+
+              <p>Explore the bones and landmarks of the human skull.</p>
+            </div>
+
+            <span class="structure-arrow"> → </span>
+          </a>
+
+          <!-- Vertebral Column -->
+
+          <a
+            href="pages/structure-detail.html?id=vertebral-column&from=home"
+            class="structure-card"
+          >
+            <div class="structure-image">
+              <img
+                src="assets/icons/vertebral-column.webp"
+                data-fallback="assets/images/vertebral-column.jpeg"
+                onerror="this.onerror=null;this.src=this.getAttribute('data-fallback')"
+                alt="Vertebral Column"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div class="structure-info">
+              <div class="structure-meta">
+                <span class="structure-type"> BONE </span>
+              </div>
+
+              <h3>Vertebral Column</h3>
+
+              <p>Discover the structure and organization of the spine.</p>
+            </div>
+
+            <span class="structure-arrow"> → </span>
+          </a>
+
+          <!-- Browse all -->
+
+          <a href="pages/library.html" class="structure-card structure-card-more">
+            <div class="structure-image">
+              <img src="assets/images/upper-limb.jpeg" alt="" loading="lazy" decoding="async" />
+            </div>
+
+            <div class="structure-info">
+              <div class="structure-meta">
+                <span class="structure-type"> LIBRARY </span>
+              </div>
+
+              <h3>Browse all <span id="homeCount">15</span> structures</h3>
+
+              <p>Skull, spine, thorax, arm, hand, pelvis, leg and foot.</p>
+            </div>
+
+            <span class="structure-arrow"> → </span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brandcol">
+          <p class="footer-brand">Anato<span>Mark</span></p>
+          <p class="footer-tag">See anatomy come to life in augmented reality.</p>
+        </div>
+        <nav class="footer-col" aria-label="Explore">
+          <h2>Explore</h2>
+          <a href="index.html">Home</a>
+          <a href="pages/library.html">Library</a>
+          <a href="pages/how-to-use.html">How To Use</a>
+          <a href="pages/download-marker.html">Download Marker</a>
+          <a href="pages/about.html">About</a>
+        </nav>
+        <div class="footer-col">
+          <h2>Project</h2>
+          <span>Final year project</span>
+          <span>Department of Human Anatomy</span>
+          <span>Northwest University Kano</span>
+          <span>Session 2025/2026</span>
+        </div>
+      </div>
+      <p class="footer-credits">Student: <strong>Mukhtar Aminu</strong> <span class="footer-sep">&middot;</span> <span class="footer-line">Supervisor: <strong>Ibrahim Yusuf (Bsc, Msc)</strong></span></p>
+      <div class="footer-bar">
+        <span>&copy; 2026 AnatoMark</span>
+        <span class="footer-links"><a href="pages/credits.html">Credits &amp; Privacy</a><a href="pages/about.html#contact">Contact</a></span>
+      </div>
+    </footer>
+
+    <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+    <script src="js/descriptions.js?v=20261106r5"></script>
+    <script src="js/structures-data.js?v=20261106r5"></script>
+    <script src="js/nav.js?v=20261106r5"></script>
+    <script src="js/picker.js?v=20261106r5"></script>
+    <script src="js/homepage.js?v=20261106r5"></script>
+  </body>
+</html>

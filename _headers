@@ -1,0 +1,21 @@
+# Netlify response headers (this file must sit in the published root).
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(self), microphone=(), geolocation=()
+
+# Pages and code: always check for a newer copy, so updates reach phones quickly.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Models, thumbnails, images, libraries: cached for a day (change a file's name or wait a day when you replace one).
+/models/*
+  Cache-Control: public, max-age=86400
+/assets/*
+  Cache-Control: public, max-age=86400
+/libs/*
+  Cache-Control: public, max-age=604800

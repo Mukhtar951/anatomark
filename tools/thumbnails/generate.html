@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AnatoMark thumbnail generator</title>
+<style>
+  body{margin:0;padding:16px;background:#010a0c;color:#e8fffc;font:15px/1.5 system-ui,sans-serif}
+  h1{font-size:18px;margin:0 0 4px} p{margin:4px 0 12px;color:#9bbdb8}
+  button{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid #00e5c7;background:#00e5c7;color:#001411;font-weight:700;font-size:15px}
+  button.alt{background:transparent;color:#00e5c7;min-height:36px;padding:0 12px;font-size:13px}
+  .row{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #12302f}
+  .row img{width:64px;height:64px;object-fit:contain;background:#04161a;border-radius:8px}
+  .row b{display:block} .st{color:#9bbdb8;font-size:13px} .ok{color:#00e5c7} .bad{color:#ff8a8a}
+</style>
+<script>
+  // A-Frame is only used for its three.js. Local copy first, then the CDN.
+  (function(){var ok=false;try{var x=new XMLHttpRequest();x.open("HEAD","../../libs/aframe.min.js",false);x.send();ok=x.status===200&&/javascript/i.test(x.getResponseHeader("Content-Type")||"")}catch(e){}
+  document.write('<script src="'+(ok?"../../libs/aframe.min.js":"https://aframe.io/releases/1.5.0/aframe.min.js")+'"><\/script>');
+  document.write('<script src="../../js/draco-path.js"><\/script>');})();
+</script>
+<script src="../../js/descriptions.js"></script>
+<script src="../../js/structures-data.js"></script>
+</head><body>
+<h1>AnatoMark thumbnail generator</h1>
+<p>Renders every model in the hologram style and saves it to <code>assets/icons/</code>. Needs internet once (Draco decoder). Keep this tab open and in the foreground.</p>
+<button id="all">Generate all</button> <span id="summary" class="st"></span>
+<div id="list"></div>
+<script>
+const T = AFRAME.THREE, N = 768, OUTSZ = 320;
+// per-bone camera angle in degrees: yaw, pitch, roll. Long bones are rolled so they run diagonally.
+const VIEW = { skull:[30,0,0], skeleton:[0,0,0], "vertebral-column":[0,0,0], thorax:[20,0,0], clavicle:[0,0,-20], scapula:[0,0,0],
+  humerus:[0,0,35], radius:[0,0,35], ulna:[0,0,35], hand:[0,0,20], pelvis:[0,0,0], femur:[0,0,35], tibia:[0,0,35], fibula:[0,0,35], foot:[0,0,0] };
+
+const renderer = new T.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setSize(N, N); renderer.setPixelRatio(1); renderer.setClearColor(0x000000, 0);
+const mat = new T.ShaderMaterial({ transparent: true, side: T.DoubleSide,
+  vertexShader: `varying vec3 vN; varying vec3 vV; void main(){ vec4 mv = modelViewMatrix*vec4(position,1.0); vN = normalize(normalMatrix*normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix*mv; }`,
+  fragmentShader: `varying vec3 vN; varying vec3 vV; void main(){ vec3 n=normalize(vN), v=normalize(vV);
+    float fres=pow(1.0-abs(dot(n,v)),2.2); float lit=0.35+0.65*max(dot(n,normalize(vec3(0.4,0.7,0.6))),0.0);
+    gl_FragColor=vec4(vec3(0.02,0.34,0.36)*lit+vec3(0.10,1.0,0.86)*fres*1.5, clamp(0.62+fres*0.5,0.0,1.0)); }` });
+const draco = new T.DRACOLoader(); draco.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.6/");
+const loader = new T.GLTFLoader().setDRACOLoader(draco);
+const cam = new T.PerspectiveCamera(30, 1, 0.01, 100);
+const D = (v) => v * Math.PI / 180;
+
+function load(url){ return new Promise((res, rej) => loader.load(url, res, undefined, rej)); }
+
+async function render(s){
+  const g = await load("../../" + s.model);
+  const scene = new T.Scene();
+  g.scene.traverse((o) => { if (o.isMesh) o.material = mat; });
+  const box = new T.Box3().setFromObject(g.scene), c = box.getCenter(new T.Vector3());
+  g.scene.position.sub(c);
+  const holder = new T.Group(); holder.add(g.scene); holder.scale.setScalar(1 / (box.getSize(new T.Vector3()).length() / 2));
+  const rot = new T.Group(); rot.add(holder);
+  const [yaw, pitch, roll] = VIEW[s.id] || [0,0,0];
+  rot.rotation.set(D(pitch), D(yaw), D(roll), "ZXY"); scene.add(rot);
+  cam.position.z = 1 / Math.sin(cam.fov * Math.PI / 360) * 1.02;
+  renderer.render(scene, cam);
+  // crop to what was drawn, pad, resize
+  const src = document.createElement("canvas"); src.width = src.height = N;
+  const sx = src.getContext("2d"); sx.drawImage(renderer.domElement, 0, 0);
+  const px = sx.getImageData(0, 0, N, N).data; let x0 = N, y0 = N, x1 = -1, y1 = -1;
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) if (px[(y * N + x) * 4 + 3] > 8) { if (x<x0) x0=x; if (x>x1) x1=x; if (y<y0) y0=y; if (y>y1) y1=y; }
+  g.scene.traverse((o) => { if (o.isMesh && o.geometry) o.geometry.dispose(); });
+  if (x1 < 0) throw new Error("nothing was drawn");
+  const w = x1 - x0 + 1, h = y1 - y0 + 1, side = Math.max(w, h), pad = Math.round(side * 0.09), full = side + 2 * pad;
+  const out = document.createElement("canvas"); out.width = out.height = OUTSZ;
+  const ox = out.getContext("2d"); ox.imageSmoothingQuality = "high";
+  const k = OUTSZ / full;
+  ox.drawImage(src, x0, y0, w, h, (pad + (side - w) / 2) * k, (pad + (side - h) / 2) * k, w * k, h * k);
+  return new Promise((r) => out.toBlob(r, "image/webp", 0.88));
+}
+
+async function save(id, blob){
+  if (blob.type !== "image/webp") throw new Error("this browser can't make WebP images");
+  const r = await fetch("/save/" + id + ".webp", { method: "POST", body: blob });
+  if (!r.ok) throw new Error("could not save (is save-server.py running?)");
+}
+
+const list = document.getElementById("list"), summary = document.getElementById("summary");
+const rows = {};
+anatomarkActiveStructures().forEach((s) => {
+  const d = document.createElement("div"); d.className = "row";
+  d.innerHTML = `<img alt=""><div style="flex:1"><b>${s.name}</b><span class="st">waiting</span></div><button class="alt">Redo</button>`;
+  list.appendChild(d); rows[s.id] = { d, img: d.querySelector("img"), st: d.querySelector(".st"), s };
+  d.querySelector("button").onclick = () => one(s.id);
+});
+async function one(id){
+  const r = rows[id]; r.st.className = "st"; r.st.textContent = "rendering…";
+  try {
+    const blob = await render(r.s);
+    r.img.src = URL.createObjectURL(blob);
+    await save(id, blob);
+    r.st.className = "st ok"; r.st.textContent = "saved (" + Math.round(blob.size / 1024) + " KB)"; return true;
+  } catch (e) { r.st.className = "st bad"; r.st.textContent = "failed: " + (e && e.message || e); return false; }
+}
+document.getElementById("all").onclick = async (ev) => {
+  ev.target.disabled = true; let ok = 0, n = 0;
+  for (const id of Object.keys(rows)) { n++; if (await one(id)) ok++; summary.textContent = ok + " saved, " + (n - ok) + " failed"; }
+  ev.target.disabled = false; summary.textContent = ok + " of " + n + " saved. Done: reload the site to see them.";
+};
+</script>
+</body></html>

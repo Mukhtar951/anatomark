@@ -1,0 +1,126 @@
+/* =========================================================
+   ANATOMARK DESIGN TOKENS
+   ========================================================= */
+
+:root {
+
+  --color-bg: #050f11;
+
+  --color-bg-deep: #010a0c;
+
+  --color-card: #0b191a;
+
+  --color-primary: #00e5c7;
+
+  --color-white: #f1fffd;
+
+  --color-text-muted:
+    rgba(232, 255, 252, 0.68);
+
+  --font-main:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  --font-mono:
+    "Courier New",
+    monospace;
+
+  /* Additive tokens — new pages only, nothing existing depends on these */
+  --color-bone: #e8dcc8;
+  --color-coral: #ff6b5e;
+  --color-coral-dim: rgba(255, 107, 94, 0.5);
+
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+
+}
+
+
+*,
+*::before,
+*::after {
+
+  box-sizing: border-box;
+
+}
+
+
+html {
+
+  margin: 0;
+
+  padding: 0;
+
+  background:
+    var(--color-bg-deep);
+
+  scroll-behavior: smooth;
+
+}
+
+
+body {
+
+  margin: 0;
+
+  padding: 0;
+
+  min-width: 320px;
+
+  background:
+    radial-gradient(
+      circle at 70% 35%,
+      rgba(0, 229, 199, 0.035),
+      transparent 32%
+    ),
+    var(--color-bg-deep);
+
+  color:
+    var(--color-white);
+
+  font-family:
+    var(--font-main);
+
+  -webkit-font-smoothing:
+    antialiased;
+
+}
+
+
+button,
+input,
+textarea,
+select {
+
+  font: inherit;
+
+}
+
+
+img {
+
+  max-width: 100%;
+
+}
+
+
+a {
+
+  color: inherit;
+
+}
+
+/* Respect the "reduce motion" accessibility setting on every page */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

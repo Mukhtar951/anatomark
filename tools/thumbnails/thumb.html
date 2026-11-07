@@ -1,0 +1,45 @@
+<!doctype html>
+<!-- AnatoMark thumbnail renderer (hologram style). Opened by make-thumbnails.py, not by visitors.
+     ?model=<url>&yaw=<deg>&pitch=<deg>&roll=<deg> -->
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:transparent}canvas{display:block}</style>
+<script src="../../libs/aframe.min.js"></script>
+<script src="../../js/draco-path.js"></script>
+</head><body><script>
+const q = new URLSearchParams(location.search), T = AFRAME.THREE, N = 768;
+const r = new T.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+r.setSize(N, N); r.setPixelRatio(1); r.setClearColor(0x000000, 0); document.body.appendChild(r.domElement);
+const scene = new T.Scene(), cam = new T.PerspectiveCamera(30, 1, 0.01, 100);
+const deg = (k) => (parseFloat(q.get(k)) || 0) * Math.PI / 180;
+
+/* hologram: deep teal body shaded by light, bright cyan rim where the surface turns away */
+const mat = new T.ShaderMaterial({
+  transparent: true,
+  vertexShader: `varying vec3 vN; varying vec3 vV;
+    void main(){ vec4 mv = modelViewMatrix * vec4(position,1.0); vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv; }`,
+  fragmentShader: `varying vec3 vN; varying vec3 vV;
+    void main(){
+      vec3 n = normalize(vN); vec3 v = normalize(vV);
+      float fres = pow(1.0 - abs(dot(n, v)), 2.2);
+      float lit = 0.35 + 0.65 * max(dot(n, normalize(vec3(0.4, 0.7, 0.6))), 0.0);
+      vec3 body = vec3(0.02, 0.34, 0.36) * lit;
+      vec3 rim = vec3(0.10, 1.0, 0.86) * fres * 1.5;
+      float a = clamp(0.62 + fres * 0.5, 0.0, 1.0);
+      gl_FragColor = vec4(body + rim, a);
+    }`,
+  side: T.DoubleSide,
+});
+new T.GLTFLoader().setDRACOLoader((() => { const d = new T.DRACOLoader(); d.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/'); return d; })())
+  .load(q.get('model'), (g) => {
+    g.scene.traverse((o) => { if (o.isMesh) { o.material = mat; } });
+    const box = new T.Box3().setFromObject(g.scene), c = box.getCenter(new T.Vector3());
+    g.scene.position.sub(c);
+    const holder = new T.Group(); holder.add(g.scene);
+    holder.scale.setScalar(1 / (box.getSize(new T.Vector3()).length() / 2));
+    const rot = new T.Group(); rot.add(holder);
+    rot.rotation.set(deg('pitch'), deg('yaw'), deg('roll'), 'ZXY');
+    scene.add(rot);
+    cam.position.z = 1 / Math.sin(cam.fov * Math.PI / 360) * 1.02;
+    r.render(scene, cam); document.title = 'done';
+  }, undefined, (e) => { document.title = 'error: ' + (e && e.message || e); });
+</script></body></html>

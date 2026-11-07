@@ -1,0 +1,11 @@
+# keep the repository small and clean
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+
+# big originals and scratch output from the optimiser (only the compressed models in /models are deployed)
+models-optimized/
+models-original/
+*.blend
+*.zip
