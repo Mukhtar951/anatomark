@@ -107,7 +107,8 @@
       d.setDecoderPath(DRACO_CDN); // js/draco-path.js swaps in /libs/draco/ when it exists
       loader.setDRACOLoader(d);
     }
-
+    
+    let knownBytes = 0;
     function load() {
       ui.showProgress(0);
       const slow = setTimeout(() => ui.note("Still loading… large models can take a while on a slow connection."), 15000);
@@ -129,7 +130,8 @@
         ready = true; ui.done(); apply();
         if (cfg.onReady) cfg.onReady();
       }, (ev) => {
-        if (ev && ev.lengthComputable) ui.showProgress(ev.loaded / ev.total);
+        const total = (ev && ev.lengthComputable && ev.total) || knownBytes;
+        if (ev && total) ui.showProgress(Math.min(ev.loaded / total, 1), ev.loaded, total);
       }, (err) => {
         clearTimeout(slow);
         console.error("[AnatoMark] 3D viewer could not load", url, err);
@@ -171,7 +173,9 @@
     ui.onLoadAnyway(go);
     try {
       fetch(url, { method: "HEAD" }).then((r) => {
-        const mb = (parseInt(r.headers.get("content-length"), 10) || 0) / 1048576;
+        const len = parseInt(r.headers.get("content-length"), 10) || 0;
+        if (r.ok) knownBytes = len;
+        const mb = len / 1048576;
         // A host that rejects HEAD (405/403…) must not stop the load: the real GET decides.
         const mb2 = r.ok ? mb : 0;
         if (mb2 > BIG_MB) ui.gate(mb2); else go();
@@ -201,7 +205,13 @@
     const noteEl = overlay.querySelector(".viewer3d-note"), gateBtn = overlay.querySelector(".viewer3d-gate");
     return {
       stage, reset,
-      showProgress(f) { bar.hidden = false; fillEl.style.width = Math.round(Math.max(0.03, f) * 100) + "%"; noteEl.textContent = "Loading 3D model…"; },
+      showProgress(f, loaded, total) {
+        bar.hidden = false;
+        fillEl.style.width = Math.round(Math.max(0.03, f) * 100) + "%";
+        if (total && f >= 1) noteEl.textContent = "Preparing the model...";
+        else if (total) noteEl.textContent = "Loading 3D model… " + Math.round(f * 100) + "% (" + (loaded / 1048576).toFixed(1) + " of " + (total / 1048576).toFixed(1) + " MB)";
+        else noteEl.textContent = "Loading 3D model…";
+      },
       note(t) { noteEl.textContent = t; },
       gate(mb) { noteEl.textContent = "This model is large (" + Math.round(mb) + " MB)."; gateBtn.hidden = false; },
       clearGate() { gateBtn.hidden = true; },

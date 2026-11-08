@@ -51,8 +51,8 @@ const credit = (title, author, url, extra) => Object.assign({ title, author, url
 /* id, name, tag, region, credit, model file, image, fitSize?, spec */
 const BONES = [
   { id: "skeleton", name: "Full Skeleton", tag: "BONE GROUP", region: "head",
-    credit: credit("Skeleton (collection of thunthu)", "thunthu", "https://skfb.ly/CyES"),
-    model: "models/skeleton_collection_of_thunthu.glb",
+    credit: credit("Male Human Skeleton - ZBrush - Anatomy Study", "Ruslan Gadzhiev", "https://skfb.ly/LXLD"),
+    model: "models/male_human_skeleton_-_zbrush_-_anatomy_study.glb",
     spec: { classification: "Skeleton", count: "206 bones (adult)", function: "Support, Protection, Movement", region: "Whole body" } },
 
   { id: "skull", name: "Human Skull", tag: "BONE", region: "head",
@@ -68,20 +68,20 @@ const BONES = [
     credit: credit("Human Thorax", "Medulla", "https://skfb.ly/6xRPL"),
     solidify: "#a9bdd6",   // the file's cartilage is half see-through; this makes it solid (cleaner and faster). Remove to keep it see-through.
     model: "models/human_thorax.glb",
-    spec: { classification: "Bone group", count: "—", function: "Protection, Breathing mechanics", region: "Chest" } },
+    spec: { classification: "Bone group", count: "37 bones", function: "Protection, Breathing mechanics", region: "Chest" } },
 
   { id: "clavicle", name: "Clavicle", tag: "BONE", region: "upper",
     credit: credit("Human clavicle", "Eric Bauer", "https://skfb.ly/69pKL"),
     model: "models/human_clavicle.glb",
     spec: { classification: "Long bone", count: "2 (one each side)", function: "Strut between trunk and arm", region: "Shoulder girdle" } },
   { id: "scapula", name: "Scapula", tag: "BONE", region: "upper",
-    credit: credit("Human scapula", "Eric Bauer", "https://skfb.ly/6tAJV"),
+    credit: credit("Human scapula", "Taber Noble", "https://skfb.ly/6VUGw"),
     model: "models/human_scapula.glb",
     spec: { classification: "Flat bone", count: "2 (one each side)", function: "Shoulder movement, Muscle attachment", region: "Shoulder girdle" } },
   { id: "humerus", name: "Humerus", tag: "BONE", region: "upper",
-    credit: credit("Human Humerus", "Eric Bauer", "https://skfb.ly/6r77O", { license: "cc-by-nc-nd-4.0" }),
+    credit: credit("Human Humerus", "Imaging lab", "https://skfb.ly/M9SZ"),
     tint: false,
-    texture: "bone",   // no UV map in this model: gets the procedural bone surface (js/bone-texture.js). Remove this line to show it plain.
+    texture: "bone", 
     model: "models/human_humerus.glb",
     spec: { classification: "Long bone", count: "2 (one each side)", function: "Movement, Load-bearing", region: "Arm" } },
   { id: "radius", name: "Radius", tag: "BONE", region: "upper",
@@ -100,7 +100,7 @@ const BONES = [
   { id: "pelvis", name: "Pelvis", tag: "BONE GROUP", region: "lower",
     credit: credit("Pelvic bone (collection of thunthu)", "thunthu", "https://skfb.ly/CyRu"),
     model: "models/pelvic_bone_collection_of_thunthu.glb",
-    spec: { classification: "Bone group", count: "—", function: "Weight transfer, Protection of pelvic organs", region: "Pelvic girdle" } },
+    spec: { classification: "Bone group", count: "4 bones", function: "Weight transfer, Protection of pelvic organs", region: "Pelvic girdle" } },
   { id: "femur", name: "Femur", tag: "BONE", region: "lower",
     credit: credit("Human Femur", "Eric Bauer", "https://skfb.ly/6ursH"),
     model: "models/human_femur.glb",
